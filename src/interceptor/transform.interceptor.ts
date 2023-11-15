@@ -40,20 +40,17 @@ export class TransformInterceptor<T>
         const resp = {
           statusCode: HttpStatus.OK,
           timestamp: dayjs().format('YYYY-MM-DD HH:mm:ss'),
+          message: 'success',
         };
 
-        if (typeof data === 'string') {
-          return {
-            ...resp,
-            message: data,
-          };
+        if (!data && data !== 0) {
+          return { ...resp };
+        } else if (typeof data === 'string') {
+          return { ...resp, message: data };
         } else if (Array.isArray(data) || typeof data === 'object') {
-          return {
-            ...resp,
-            data,
-          };
+          return { ...resp, data };
         } else {
-          return { ...resp, ...data };
+          return { ...resp, data };
         }
       }),
     );
