@@ -3,8 +3,10 @@ import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import * as cors from 'cors';
 import { AppModule } from './app.module';
-import { HttpExceptionFilter } from './filter/http-exception.filter';
-import { TransformInterceptor } from './interceptor/transform.interceptor';
+import { HttpExceptionFilter } from './filter';
+import { TransformInterceptor } from './interceptor';
+
+declare const module: any;
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
@@ -25,6 +27,10 @@ async function bootstrap() {
   app.useGlobalInterceptors(new TransformInterceptor());
 
   app.useGlobalFilters(new HttpExceptionFilter());
+
+  // app.useGlobalPipes(new ValidationPipe());
+
+  // app.useGlobalGuards(new RolesGuard());
 
   await app.listen(3000);
 
