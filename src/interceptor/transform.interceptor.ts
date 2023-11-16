@@ -10,7 +10,10 @@ import * as dayjs from 'dayjs';
 import { Observable, map } from 'rxjs';
 
 interface Response<T> {
-  data: T;
+  statusCode: HttpStatus;
+  timestamp: string;
+  message: string;
+  data?: T;
 }
 
 @Injectable()
