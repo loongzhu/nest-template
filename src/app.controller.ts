@@ -1,9 +1,9 @@
-import { Controller, Get, Sse } from '@nestjs/common';
-import { PrismaClient } from '@prisma/client';
-import { Observable } from 'rxjs';
-import { AppService } from './app.service';
+import { Controller, Get, Sse } from "@nestjs/common"
+import { PrismaClient } from "@prisma/client"
+import { Observable } from "rxjs"
+import { AppService } from "./app.service"
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient()
 
 async function main() {
   // ... you will write your Prisma Client queries here
@@ -11,13 +11,13 @@ async function main() {
 
 main()
   .then(async () => {
-    await prisma.$disconnect();
+    await prisma.$disconnect()
   })
   .catch(async (e) => {
-    console.error(e);
-    await prisma.$disconnect();
-    process.exit(1);
-  });
+    console.error(e)
+    await prisma.$disconnect()
+    process.exit(1)
+  })
 
 @Controller()
 export class AppController {
@@ -25,21 +25,21 @@ export class AppController {
 
   @Get()
   getHello(): string {
-    return this.appService.getHello();
+    return this.appService.getHello()
   }
 
-  @Sse('stream')
+  @Sse("stream")
   stream() {
     return new Observable((observer) => {
-      observer.next({ data: { msg: 'aaa' } });
+      observer.next({ data: { msg: "aaa" } })
 
       setTimeout(() => {
-        observer.next({ data: { msg: 'bbb' } });
-      }, 2000);
+        observer.next({ data: { msg: "bbb" } })
+      }, 2000)
 
       setTimeout(() => {
-        observer.next({ data: { msg: 'ccc' } });
-      }, 5000);
-    });
+        observer.next({ data: { msg: "ccc" } })
+      }, 5000)
+    })
   }
 }

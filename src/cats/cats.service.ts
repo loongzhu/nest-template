@@ -1,5 +1,5 @@
-import { Injectable } from '@nestjs/common';
-import { Cat } from './interfaces/cat.interface';
+import { Injectable } from "@nestjs/common"
+import { Cat } from "./interfaces/cat.interface"
 
 @Injectable()
 export class CatsService {
@@ -8,32 +8,32 @@ export class CatsService {
     name: `Cat ${i + 1}`,
     age: Math.floor(Math.random() * 10),
     breed: `Breed ${i + 1}`,
-  }));
+  }))
 
   generateId(): number {
-    return Math.floor(Math.random() * 100000000);
+    return Math.floor(Math.random() * 100000000)
   }
 
   create(cat: Cat) {
-    this.cats.push({ id: this.generateId(), ...cat });
+    this.cats.push({ id: this.generateId(), ...cat })
   }
 
   findAll(): Cat[] {
-    return this.cats;
+    return this.cats
   }
 
   findOne(id: number): Cat[] {
-    return this.cats.find((cat) => cat.id === id);
+    return this.cats.find((cat) => cat.id === id)
   }
 
   update(id: number, cat: Cat) {
-    const raw = this.cats.find((cat) => cat.id === id);
-    const index = this.cats.findIndex((cat) => cat.id === id);
-    this.cats[index] = { ...raw, ...cat };
+    const raw = this.cats.find((cat) => cat.id === id)
+    const index = this.cats.findIndex((cat) => cat.id === id)
+    this.cats[index] = { ...raw, ...cat }
   }
 
   delete(id: number) {
-    const index = this.cats.findIndex((cat) => cat.id === id);
-    this.cats.splice(index, 1);
+    const index = this.cats.findIndex((cat) => cat.id === id)
+    this.cats.splice(index, 1)
   }
 }
