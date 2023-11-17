@@ -2,8 +2,8 @@ import {
   ArgumentMetadata,
   BadRequestException,
   PipeTransform,
-} from "@nestjs/common"
-import { ZodObject, z } from "zod"
+} from "@nestjs/common";
+import { ZodObject, z } from "zod";
 
 /**
  * use zod for validation
@@ -14,11 +14,11 @@ export class ZodValidationPipe implements PipeTransform {
 
   transform(value: unknown, metadata: ArgumentMetadata) {
     try {
-      this.schema.parse(value)
+      this.schema.parse(value);
     } catch (error) {
-      throw new BadRequestException("Zod Validation failed")
+      throw new BadRequestException("Zod Validation failed");
     }
-    return value
+    return value;
   }
 }
 
@@ -28,6 +28,6 @@ export const createCatSchema = z
     age: z.number(),
     breed: z.string(),
   })
-  .required()
+  .required();
 
-export type CreateCatDto = z.infer<typeof createCatSchema>
+export type CreateCatDto = z.infer<typeof createCatSchema>;
