@@ -22,7 +22,7 @@ export class CustomValidationPipe implements PipeTransform<any> {
     if (errors.length > 0) {
       const message = errors
         .map((error) => {
-          return Object.values(error.constraints).join(";");
+          return Object.values(error.constraints ?? {}).join(";");
         })
         .join(";");
 

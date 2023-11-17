@@ -48,12 +48,12 @@ export class AuthService {
 
 const privateKey = "privateKey";
 
-async function encrypt(password: string): string {
+async function encrypt(password: string): Promise<string> {
   const pass = await md5(password + privateKey).toString();
   return pass;
 }
 
-async function decrypt(input: string, password: string): boolean {
+async function decrypt(input: string, password: string): Promise<boolean> {
   const pass = await encrypt(input);
   return pass !== password;
 }

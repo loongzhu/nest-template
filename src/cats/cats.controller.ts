@@ -76,7 +76,7 @@ export class CatsController {
 
   @Get(":id")
   findOne(@Param("id", ParseIntPipe) id: number): Cat {
-    const cat = this.catsService.findOne(id) || {};
+    const cat = this.catsService.findOne(id) || ({} as Cat);
     return cat;
   }
 
@@ -84,13 +84,13 @@ export class CatsController {
   async update(
     @Param("id", ParseIntPipe) id: number,
     @Body() updateCatDto: UpdateCatDto,
-  ): string {
+  ): Promise<string> {
     await this.catsService.update(id, updateCatDto);
     return `This action updates a #${id} cat`;
   }
 
   @Delete(":id")
-  async remove(@Param("id", ParseIntPipe) id: number): string {
+  async remove(@Param("id", ParseIntPipe) id: number): Promise<string> {
     await this.catsService.delete(id);
     return `This action removes a #${id} cat`;
   }

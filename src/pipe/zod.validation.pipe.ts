@@ -10,7 +10,7 @@ import { ZodObject, z } from "zod";
  * @see [object-schema-validation](https://docs.nestjs.com/pipes#object-schema-validation)
  */
 export class ZodValidationPipe implements PipeTransform {
-  constructor(private schema: ZodObject<CreateCatDto>) {}
+  constructor(private schema: ZodObject<any>) {}
 
   transform(value: unknown, metadata: ArgumentMetadata) {
     try {

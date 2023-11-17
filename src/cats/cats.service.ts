@@ -15,14 +15,14 @@ export class CatsService {
   }
 
   create(cat: Cat) {
-    this.cats.push({ id: this.generateId(), ...cat });
+    this.cats.push({ ...cat, id: this.generateId() });
   }
 
   findAll(): Cat[] {
     return this.cats;
   }
 
-  findOne(id: number): Cat[] {
+  findOne(id: number): Cat | undefined {
     return this.cats.find((cat) => cat.id === id);
   }
 
