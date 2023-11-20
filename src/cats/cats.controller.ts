@@ -9,10 +9,10 @@ import {
   ParseIntPipe,
   Post,
   Put,
+  UseGuards,
   UseInterceptors,
   UsePipes,
 } from "@nestjs/common";
-import { UseGuards } from "@nestjs/common/decorators";
 import { Role } from "../enums";
 import { ForbiddenException } from "../exception";
 import { Roles, RolesGuard } from "../guard";
@@ -34,8 +34,8 @@ import { Cat } from "./interfaces/cat.interface";
 export class CatsController {
   constructor(private catsService: CatsService) {}
 
+  @Roles(Role.ADMIN, Role.USER)
   @Post()
-  @Roles(Role.ADMIN)
   async create(
     @Body(new CustomValidationPipe()) createCatDto: CreateCatDto,
   ): Promise<void | string> {
