@@ -1,6 +1,7 @@
 <p style='position: relative;' align="center">
-  <img src="https://nestjs.com/img/logo-small.svg" style='position: absolute;left:8%;top:16%;' width="200" alt="Nest Logo" />
-  <img  src='https://nestjs.com/header.1af6756a.png'/>
+  <img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" />
+  <!-- From https://nestjs.com/ -->
+  <img src='./src/assets/cat.png'/>
 </p>
 
 ## Description
