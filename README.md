@@ -1,30 +1,13 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+<p style='position: relative;' align="center">
+  <img src="https://nestjs.com/img/logo-small.svg" style='position: absolute;left:8%;top:16%;' width="200" alt="Nest Logo" />
+  <img  src='https://nestjs.com/header.1af6756a.png'/>
 </p>
-
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+A template for creating a server-side application using [Nest](https://github.com/nestjs/nest) and TypeScript.
+
+A simple application that allows you to create, read, update and delete users.
 
 ## Installation
 
@@ -41,8 +24,28 @@ $ pnpm run start
 # watch mode
 $ pnpm run start:dev
 
+# hmr mode
+$ pnpm run start:hmr
+$ pnpm run start:webpack
+
 # production mode
 $ pnpm run start:prod
+```
+
+## Change db
+
+```bash
+# db generate
+$ pnpm run db:generate
+
+# db migration
+$ pnpm run db:migrate
+
+# db push
+$ pnpm run db:push
+
+# db pull
+$ pnpm run db:pull
 ```
 
 ## Test
@@ -58,15 +61,21 @@ $ pnpm run test:e2e
 $ pnpm run test:cov
 ```
 
-## Support
+## Dependencies
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- [Nest](https://github.com/nestjs/nest) - A progressive Node.js framework for building efficient, reliable and scalable server-side applications.
+- [Typescript](https://www.typescriptlang.org/) - TypeScript is a language for application-scale JavaScript.
+- [Zod](https://zod.dev/) - TypeScript-first schema validation with static type inference
+- [Prisma](https://www.prisma.io/) - Next-generation Node.js and TypeScript ORM.
+- [Dayj.s](https://day.js.org/) - Fast 2kB alternative to Moment.js with the same modern API
+- [RxJS](https://rxjs.dev/) - A reactive programming library for JavaScript
+- [CORS](https://github.com/expressjs/cors) - CORS is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
+- [CryptoJS](https://cryptojs.gitbook.io/docs/) - JavaScript implementations of standard and secure cryptographic algorithms
+- [Swagger UI Express](https://github.com/scottie1984/swagger-ui-express) - Adds middleware to your express app to serve the Swagger UI bound to your Swagger document.
+- [Webpack](https://webpack.js.org/) - webpack is a static module bundler for modern JavaScript applications.
+- [Jest](https://jestjs.io/) - Jest is a delightful JavaScript Testing Framework with a focus on simplicity.
+- [Eslint](https://eslint.org/) - Find and fix problems in your JavaScript code
+- [Prettier](https://prettier.io/) - Prettier is an opinionated code formatter
 
 ## License
 
