@@ -1,6 +1,7 @@
 import { Injectable, UnauthorizedException } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
 import * as md5 from "crypto-js/md5";
+import type { updateUser } from "../users/users.service";
 import { UsersService } from "../users/users.service";
 
 @Injectable()
@@ -21,19 +22,21 @@ export class AuthService {
       throw new UnauthorizedException("Wrong password");
     }
 
-    const { password, ...result } = user;
-    console.log("🚀 ~ password:", password);
+    const { password, token, ...result } = user;
+    console.log(password, token);
 
     // TODO: Generate a JWT and return it here
     // instead of the user object
 
     const payload = {
-      sub: user.userId,
+      sub: user.id,
       username: user.username,
       roles: user.roles,
     };
 
     const access_token = await this.jwtService.signAsync(payload);
+
+    await this.usersService.updateToken({ username, token: access_token });
 
     return { ...result, access_token };
   }
@@ -48,6 +51,25 @@ export class AuthService {
     const password = await encrypt(pass);
 
     return this.usersService.create({ username, password });
+  }
+
+  async modifyUser(user: updateUser): Promise<any> {
+    const { username, password: pass } = user;
+    if (!username) {
+      throw new UnauthorizedException("Username is required");
+    }
+
+    const found = await this.usersService.findOne(username);
+    if (!found) {
+      throw new UnauthorizedException("User not found");
+    }
+
+    if (!pass) {
+      throw new UnauthorizedException("Password is required");
+    }
+    const password = await encrypt(pass);
+
+    return this.usersService.update({ username, password } as updateUser);
   }
 }
 

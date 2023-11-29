@@ -5,9 +5,11 @@ import {
   HttpCode,
   HttpStatus,
   Post,
+  Put,
   Request,
   UseGuards,
 } from "@nestjs/common";
+import type { updateUser } from "../users/users.service";
 import { Public } from "./auth.decorator";
 import { AuthGuard } from "./auth.guard";
 import { AuthService } from "./auth.service";
@@ -28,6 +30,12 @@ export class AuthController {
   @UseGuards(AuthGuard)
   getProfile(@Request() req) {
     return req.user;
+  }
+
+  @Put("modify")
+  @UseGuards(AuthGuard)
+  updateProfile(@Body() data: updateUser) {
+    return this.authService.modifyUser(data);
   }
 
   @Public()

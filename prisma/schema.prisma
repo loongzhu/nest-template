@@ -21,10 +21,12 @@ model Article {
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
-  posts Post[]
+  id       Int     @id @default(autoincrement())
+  username String  @unique
+  password String
+  roles    String?
+  token    String?
+  posts    Post[]
 }
 
 model Post {
